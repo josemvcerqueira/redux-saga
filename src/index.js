@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./components/App";
+import axios from "axios";
+import reducers from "./reducers";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// prefix the URL
+// axios.get("/users")
+axios.defaults.withCredentials = true;
+axios.default.baseURL = "https://rem-rest-api.herokuapp.com/";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const store = createStore(reducers);
+
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("root")
+);
