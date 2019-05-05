@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
+import logger from "redux-logger";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // prefix the URL
 // axios.get("/users")
@@ -17,7 +19,7 @@ axios.defaults.baseURL =
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+const store = createStore(reducers, applyMiddleware(sagaMiddleware, logger));
 
 sagaMiddleware.run(rootSaga);
 
