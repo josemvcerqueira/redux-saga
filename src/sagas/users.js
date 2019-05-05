@@ -14,7 +14,13 @@ function* getUsers() {
 	try {
 		const result = yield call(api.getUsers);
 		yield put(actions.getUsersSuccess({ items: result.data.data }));
-	} catch (error) {}
+	} catch (error) {
+		yield put(
+			actions.usersError({
+				error: "An error occured when trying to get the users"
+			})
+		);
+	}
 }
 
 // Watcher Saga
@@ -30,7 +36,13 @@ function* createUser(action) {
 			lastName: action.payload.lastName
 		});
 		yield call(getUsers);
-	} catch (error) {}
+	} catch (error) {
+		yield put(
+			actions.usersError({
+				error: "An error occured when trying to create the user"
+			})
+		);
+	}
 }
 
 function* watchCreateUserRequest() {
@@ -41,7 +53,13 @@ function* deleteUser({ userId }) {
 	try {
 		yield call(api.deleteUser, userId);
 		yield call(getUsers);
-	} catch (error) {}
+	} catch (error) {
+		yield put(
+			actions.usersError({
+				error: "An error occured when trying to delete the user"
+			})
+		);
+	}
 }
 
 function* watchDeleteUserRequest() {
