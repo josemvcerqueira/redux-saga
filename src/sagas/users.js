@@ -13,7 +13,7 @@ function* getUsers() {
 // Watcher Saga
 // watch an action then calls a worker saga
 function* watchGetUsersRequest() {
-	yield takeEvery(actions.type.GET_USERS_REQUEST, getUsers);
+	yield takeEvery(actions.Types.GET_USERS_REQUEST, getUsers);
 }
 
 const usersSagas = [fork(watchGetUsersRequest)];

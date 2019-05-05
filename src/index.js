@@ -11,8 +11,9 @@ import rootSaga from "./sagas";
 
 // prefix the URL
 // axios.get("/users")
-axios.defaults.withCredentials = true;
-axios.default.baseURL = "https://rem-rest-api.herokuapp.com/";
+//axios.defaults.withCredentials = true;
+axios.defaults.baseURL =
+	"https://cors-anywhere.herokuapp.com/https://rem.dbwebb.se/api";
 
 const sagaMiddleware = createSagaMiddleware();
 
