@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // axios.get("/users")
 //axios.defaults.withCredentials = true;
 axios.defaults.baseURL =
-	"https://cors-anywhere.herokuapp.com/https://rem.tomphill.co.uk/api/";
+	"https://cors-anywhere.herokuapp.com/https://rem-rest-api.herokuapp.com/api/";
 
 const sagaMiddleware = createSagaMiddleware();
 
