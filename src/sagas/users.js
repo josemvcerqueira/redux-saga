@@ -12,3 +12,11 @@ function* getUsers() {
 function* watchGetUsersRequest() {
 	yield takeEvery(actions.type.GET_USERS_REQUEST, getUsers);
 }
+
+function* watcherSaga() {
+	while (true) {
+		yield 1;
+		yield 2;
+		yield 3;
+	}
+}
